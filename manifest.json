@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Disney+ Pillar Unboxing",
+  "description": "Remove pillarboxing effect on 4:3 resolution monitors playing Disney+",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "logo.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": [
+        "https://developer.chrome.com/docs/extensions/*",
+        "https://developer.chrome.com/docs/webstore/*",
+        "https://www.disneyplus.com/video/*"
+      ]
+    }
+  ]
+}
