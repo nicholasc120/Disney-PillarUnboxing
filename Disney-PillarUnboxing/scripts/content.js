@@ -19,7 +19,7 @@ if (isWindowAspectRatio4to3()) {
                 const video = document.querySelector('video');
                 if (video) {
                     if (video.videoWidth != 640 && video.videoWidth != 0) {
-                        chrome.storage.sync.get(
+                        chrome.storage.local.get(
                             { scaleFactor: '1.5', enabled: true },
                             (items) => {
                                 if (items.enabled) {

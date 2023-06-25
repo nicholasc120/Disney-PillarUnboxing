@@ -3,7 +3,7 @@ const saveOptions = () => {
     const scaleFactor = document.getElementById('scaleFactor').value;
     const enabled = document.getElementById('enabled').checked;
 
-    chrome.storage.sync.set(
+    chrome.storage.local.set(
         { scaleFactor: scaleFactor, enabled: enabled },
         () => {
             // Update status to let user know options were saved.
@@ -19,7 +19,7 @@ const saveOptions = () => {
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 const restoreOptions = () => {
-    chrome.storage.sync.get(
+    chrome.storage.local.get(
         { scaleFactor: '1.5', enabled: true },
         (items) => {
             document.getElementById('scaleFactor').value = items.scaleFactor;
