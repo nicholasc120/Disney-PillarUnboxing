@@ -19,12 +19,19 @@ if (isWindowAspectRatio4to3()) {
                 const video = document.querySelector('video');
                 if (video) {
                     if (video.videoWidth != 640 && video.videoWidth != 0) {
-                        // Check if the added node is a video element
-                        const videoPlayer = document.getElementsByClassName('btm-media-player');
-                        for (let i = 0; i < videoPlayer.length; i++) {
-                            videoPlayer[i].style.transform = 'scale(1.25)'
-                        }
-                        console.log("scaling video")
+                        chrome.storage.sync.get(
+                            { scaleFactor: '1.5', enabled: true },
+                            (items) => {
+                                if (items.enabled) {
+                                    // Check if the added node is a video element
+                                    const videoPlayer = document.getElementsByClassName('btm-media-player');
+                                    for (let i = 0; i < videoPlayer.length; i++) {
+                                        videoPlayer[i].style.transform = 'scale(' + items.scaleFactor + ')'
+                                    }
+                                    console.log("scaling by factor of " + items.scaleFactor)
+                                }
+                            }
+                        );
                     }
                 }
             }
